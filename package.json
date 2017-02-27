@@ -1,0 +1,17 @@
+{
+  "name": "iot-light-switch",
+  "version": "1.0.0",
+  "description": "An app to remotely turn ON or OFF a electronic device like a light using Arduino for IoT.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "naeemur",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "jade": "^1.11.0"
+  }
+}
