@@ -39,7 +39,7 @@ app.get('/user', (req, res) => {
 	// console.log(req);
 });
 
-app.get('/arduino', (req, res) => {
+app.get('/light_json', (req, res) => {
 	res.send(`{ "light": "${ light ? 'on' : 'off' }" }`);
 	// res.send(light ? '1' : '0');
 	// console.log(`Light: `, req);
