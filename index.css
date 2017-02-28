@@ -83,7 +83,7 @@
   }
 }
 html {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: sans-serif;
   background: #333;
 }
 body {
@@ -93,6 +93,7 @@ h1 {
   color: #f9690e;
   text-align: center;
   text-transform: uppercase;
+  font-weight: 400;
   font-size: 30px;
 }
 #bg {
@@ -129,7 +130,7 @@ h1 {
   left: 50%;
   margin-top: -200px;
   margin-left: -150px;
-  top: 220px;
+  top: 230px;
   cursor: pointer;
 }
 #bulb>svg {
@@ -195,10 +196,10 @@ h1 {
 form {
   position: absolute;
   width: 300px;
-  height: 190px;
+  height: 200px;
   top: 50%;
   left: 50%;
-  margin-top: -95px;
+  margin-top: -100px;
   margin-left: -150px;
   background: rgba(0,0,0,0.8);
   border-radius: 8px;
@@ -210,6 +211,7 @@ form>p {
   margin: 0 5%;
   padding: 0;
   color: #fff;
+  font-size: 16px;
 }
 form>p:first-child {
   margin-top: 10px;
@@ -219,7 +221,8 @@ form>input {
   height: 26px;
   border: none;
   margin: 10px 5%;
-  padding: 3px 2%;
+  padding: 3px 0;
+  text-indent: 5px;
   font-size: 16px;
   line-height: 20px;
 }
@@ -231,5 +234,5 @@ form>input {
   transform: rotateZ(180deg);
 }
 #chek:checked~form {
-  top: 110px;
+  top: 130px;
 }

@@ -40,9 +40,9 @@
 </div>
 <div id="bg"></div>
 
-<label id="down" for="chek" title="Show login info">
-<svg file="arrow-angle-down.svg" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <polygon points="2.34 3.76 0.93 5.17 6.59 10.83 8 12.24 9.41 10.83 15.07 5.17 13.66 3.76 8 9.41 2.34 3.76"/>
+<label id="down" for="chek" title="Show login setting">
+<svg file="gear.svg" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <path d="M1,7.23V8.83l1.94.64.45,1.09-.88,1.84,1.13,1.13,1.81-.91,1.09.45L7.23,15H8.82L9.45,13l1.11-.45,1.84.88,1.13-1.13-.92-1.81.47-1.09L15,8.76V7.17l-1.94-.64-.45-1.09.88-1.84L12.36,2.47l-1.81.91L9.46,2.93,8.77,1H7.17L6.54,3,5.43,3.4,3.59,2.52,2.46,3.65l.91,1.81L2.92,6.55ZM8,5A3,3,0,1,1,5,8,3,3,0,0,1,8,5Z"/>
 </svg>
 </label>
 <script>
@@ -102,4 +102,29 @@
 		LS.user = I('user').value;
 		LS.pass = I('pass').value;
 	});
+	var check = new XMLHttpRequest();
+	check.open('GET', '/light_json', true);
+	check.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+	check.onload = function() {
+		if (check.status >= 200 && check.status < 400) {
+			// Success!
+			var stat = JSON.parse(check.responseText)['light'];
+			console.log(stat);
+			if(stat == 'on') {
+				addClass(I('bulb'), 'on');
+			} else {
+				remClass(I('bulb'), 'on');
+			}
+		} else {
+			// We reached our target server, but it returned an error
+		}
+	};
+	check.onerror = function() {
+		// There was a connection error of some sort
+		// alert('Connection Error! Try again later.');
+	};
+	setInterval(function(){
+		check.open('GET', '/light_json', true);
+		check.send();
+	},1500);
 </script>

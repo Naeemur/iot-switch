@@ -2,6 +2,7 @@ let fs = require('fs');
 let path = require('path');
 let express = require('express');
 let bodyParser = require('body-parser');
+let cors = require('cors');
 
 let app = express();
 let port = process.env.PORT || 80;
@@ -11,6 +12,7 @@ let files = {
 }
 let light = false, user = 'naeem', pass = 'ictmbstu';
 let html = e => `
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -28,6 +30,7 @@ ${files.html}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send(html());
