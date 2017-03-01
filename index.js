@@ -10,7 +10,7 @@ let files = {
 	html: fs.readFileSync(path.join(__dirname, '/index.html')).toString(),
 	css: fs.readFileSync(path.join(__dirname, '/index.css')).toString()
 }
-let light = false, user = 'naeem', pass = 'ictmbstu';
+let status = false, user = 'B'+'at'+'M'+'a'+'n', pass = 'B'+'r'+'uc'+'eWy'+'a'+'ne';
 let html = e => `
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@ let html = e => `
 	<style>${files.css}</style>
 </head>
 <body>
-<script>var LIGHT = ${ light ? 'true' : 'false' };</script>
+<script>var LIGHT = ${ status ? 'true' : 'false' };</script>
 ${files.html}
 </body>
 </html>
@@ -43,7 +43,7 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/light_json', (req, res) => {
-	res.send(`{ "light": "${ light ? 'on' : 'off' }" }`);
+	res.send(`{ "light": "${ status ? 'on' : 'off' }" }`);
 	// res.send(light ? '1' : '0');
 	// console.log(`Light: `, req);
 });
@@ -52,8 +52,8 @@ app.post('/user', (req, res) => {
 	// console.log('user: ', req.body);
 	if(req.body.user == user && req.body.pass == pass) {
 		console.log('Switching!');
-		light = !(light);
-		res.send(`<h1>Switched ${ light ? 'on' : 'off' }!</h1>`);
+		status = !(status);
+		res.send(`<h1>Switched ${ status ? 'on' : 'off' }!</h1>`);
 	} else {
 		res.send(`<h1>Wrong Username and/or Password!<br>Go back and try again.</h1>`);
 	}
