@@ -42,7 +42,7 @@ app.get('/user', (req, res) => {
 	// console.log(req);
 });
 
-app.get('/light_json', (req, res) => {
+app.get('/status', (req, res) => {
 	res.send(`{ "light": "${ status ? 'on' : 'off' }" }`);
 	// res.send(light ? '1' : '0');
 	// console.log(`Light: `, req);
